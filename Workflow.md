@@ -31,6 +31,7 @@ VsearchToMetaxa2.py -v SampleName_ITS2.txt -t ITS2OhioGenera.tax -o SampleName.I
 ```
 
 ## Use python script to get consensus-filtered median proportional abundances
+#### More detailed description at https://github.com/RTRichar/QuantitativePollenMetabarcoding
 ```
 # for help screen
 python ThreeMarkerMedianConsensus.py --help
