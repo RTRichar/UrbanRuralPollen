@@ -16,11 +16,11 @@ metaxa2 -1 SampleName_R1.fastq -2 SampleName_R2.fastq -o SampleName_trnL_MTXA -g
 # fastq must be converted to fasta before VSEARCH alignment 
 vsearch --fastq_filter SampleName_PEARED.fastq -fastaout SampleName_PEARED.fasta
 # rbcL
-vsearch --usearch_global SampleName_PEARED.fasta --db rbcLOhioGenera.fa --id 0.97 --maxaccepts 100 --maxrejects 50 --maxhits 1 --gapopen 0TE --gapext 0TE --userout SampleName_rbcL.txt --alnout SampleName_rbcL.aln --userfields query+target+id+alnlen+mism+opens+qlo+qhi+tlo+thi+evalue+bits+qcov --threads 28 --target_cov 0.98
+vsearch --usearch_global SampleName_PEARED.fasta --db rbcLOhioGenera.fa --id 0.96 --maxaccepts 100 --maxrejects 50 --maxhits 1 --gapopen 0TE --gapext 0TE --userout SampleName_rbcL.txt --alnout SampleName_rbcL.aln --userfields query+target+id+alnlen+mism+opens+qlo+qhi+tlo+thi+evalue+bits+qcov --threads 28 --target_cov 0.98
 # ITS2
 vsearch --usearch_global SampleName_PEARED.fasta --db ITS2OhioGenera.fa --id 0.925 --maxaccepts 100 --maxrejects 50 --maxhits 1 --gapopen 0TE --gapext 0TE --userout SampleName_ITS2.txt --alnout SampleName_ITS2.aln --userfields query+target+id+alnlen+mism+opens+qlo+qhi+tlo+thi+evalue+bits+qcov --threads 28 --target_cov 0.98
 # trnL
-vsearch --usearch_global SampleName_Mtxa2_Raw.fasta --db trnLOhioGenera.fa --iddef 0 --maxaccepts 200 --maxrejects 200 --maxhits 1 --gapopen 0I/0TE --gapext 0TE --userout SampleName_trnL.txt --alnout SampleName_trnL.aln --userfields query+target+id+alnlen+mism+opens+qlo+qhi+tlo+thi+evalue+bits+qcov --id 0.75 --threads 28 --target_cov 0.8
+vsearch --usearch_global SampleName_Mtxa2_Raw.fasta --db trnLOhioGenera.fa --iddef 0 --maxaccepts 200 --maxrejects 200 --maxhits 1 --gapopen 0I/0TE --gapext 0TE --userout SampleName_trnL.txt --alnout SampleName_trnL.aln --userfields query+target+id+alnlen+mism+opens+qlo+qhi+tlo+thi+evalue+bits+qcov --id 0.8 --threads 28 --target_cov 0.8
 ```
 
 ## Use python script to parse alignment files, assign sequences to taxonomic lineages and produce summary tables
