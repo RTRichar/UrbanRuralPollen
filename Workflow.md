@@ -7,7 +7,6 @@ pear -j 12 -y 48000M -f SampleName_R1.fastq -r SampleName_R2.fastq -o SampleName
 
 # for trnL only (since trnL amplicons are often longer than 600 bp, merging with Pear is not feasible)
 metaxa2 -1 SampleName_R1.fastq -2 SampleName_R2.fastq -o SampleName_trnL_MTXA -g OHIO_TRNL_G --cpu 28 --distance 10 --truncate F --save_raw T
-
 # after running, Metaxa2 produces a SampleName_raw directory which contains a fasta of the concatenated reads. Use this for downstream VSEARCH
 ```
 
