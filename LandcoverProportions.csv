@@ -1,0 +1,7 @@
+Site,Urban,Crop,Herbaceous,Forest,Water
+FSR,0.07,0.86,0.03,0.03,0
+CC,0.54,0.34,0.08,0.03,0
+BK,0.95,0,0,0.03,0.01
+GH,0.98,0,0,0,0.01
+,,,,,
+"# Proportional landscape composition within a 3 km radius for each apiary. High, intermediate and low categorizations of developed land were summed into a single category, urban land. Crop land represents row crop agriculture while the herbaceous category represents the sum of the herbaceous, herbaceous wetland and pasture categories. The water category was comprised of small streams, ponds and rivers.",,,,,
