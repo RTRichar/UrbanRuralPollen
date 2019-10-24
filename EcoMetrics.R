@@ -1,5 +1,3 @@
-# http://rcompanion.org/handbook/I_09.html
-# https://m-clark.github.io/docs/mixedModels/anovamixed.html
 library(vegan)
 library(lubridate)
 library(ggplot2)
@@ -11,24 +9,19 @@ library(tidyverse)
 library(mgcv)
 library(gratia)
 
-
 #####################################################################################################
-##################################################################################################### DATA
+##################################################################################################### Diversity
 #####################################################################################################
 
-fsr_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2FSR13_ITS2_GenMt0.001.csv")
-bk_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2BK13_ITS2_GenMt0.001.csv")
-gh_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2GH13_ITS2_GenMt0.001.csv")
-cc_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2CC13_ITS2_GenMt0.001.csv")
+fsr_13 <- read.csv("RareITS2FSR13_ITS2_GenMt0.001.csv")
+bk_13 <- read.csv("RareITS2BK13_ITS2_GenMt0.001.csv")
+gh_13 <- read.csv("RareITS2GH13_ITS2_GenMt0.001.csv")
+cc_13 <- read.csv("RareITS2CC13_ITS2_GenMt0.001.csv")
 
-fsr_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2FSR14_ITS2_GenMt0.001.csv")
-bk_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2BK14_ITS2_GenMt0.001.csv")
-gh_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2GH14_ITS2_GenMt0.001.csv")
-cc_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2CC14_ITS2_GenMt0.001.csv")
-
-#####################################################################################################
-##################################################################################################### DIVERSITY
-#####################################################################################################
+fsr_14 <- read.csv("RareITS2FSR14_ITS2_GenMt0.001.csv")
+bk_14 <- read.csv("RareITS2BK14_ITS2_GenMt0.001.csv")
+gh_14 <- read.csv("RareITS2GH14_ITS2_GenMt0.001.csv")
+cc_14 <- read.csv("RareITS2CC14_ITS2_GenMt0.001.csv")
 
 l <- list(gh_14,bk_14,cc_14,fsr_14,gh_13,bk_13,cc_13,fsr_13)
 jn <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13')
@@ -63,7 +56,6 @@ ggplot(dfDV, aes(x=JD, y=DV, colour=site)) + geom_point(size=1, aes(shape=site))
   geom_smooth(method = "loess",se=F) + facet_grid(rows = vars(yr)) + scale_colour_manual(values = c("black","darkgrey","green3","springgreen4"))
 ggplot(dfDV, aes(x=site, y=DV, colour=site)) + theme_bw() + geom_boxplot() + facet_grid(rows=vars(yr)) + ylab("Shannon Diversity") + xlab("Site") + 
   geom_point(size=1) + stat_summary(fun.y=mean,color="black",geom="point",size=2,shape=24) + scale_colour_manual(values = c("black","darkgrey","green3","springgreen4"))
-
 
 l <- list('cc','fs','gh','bk')
 d <- c(0.545,0.073,0.983,0.954)
@@ -104,15 +96,15 @@ tidyup <- function(filepath, site) {
     dplyr::select(site, year, date, xday, sitedate, genus, prop)
 }
 ###-------------------------------------------------------------------------------------------
-fsr_13 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2FSR13_ITS2_GenMt0.001.csv", "FSR")
-bk_13 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2BK13_ITS2_GenMt0.001.csv","BK")
-gh_13 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2GH13_ITS2_GenMt0.001.csv","GH")
-cc_13 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2CC13_ITS2_GenMt0.001.csv","CC")
+fsr_13 <- tidyup("RareITS2FSR13_ITS2_GenMt0.001.csv", "FSR")
+bk_13 <- tidyup("RareITS2BK13_ITS2_GenMt0.001.csv","BK")
+gh_13 <- tidyup("RareITS2GH13_ITS2_GenMt0.001.csv","GH")
+cc_13 <- tidyup("RareITS2CC13_ITS2_GenMt0.001.csv","CC")
 
-fsr_14 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2FSR14_ITS2_GenMt0.001.csv", "FSR")
-bk_14 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2BK14_ITS2_GenMt0.001.csv","BK")
-gh_14 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2GH14_ITS2_GenMt0.001.csv","GH")
-cc_14 <- tidyup("E:/UR2019/RarefiedITS2/tabled/RareITS2CC14_ITS2_GenMt0.001.csv","CC")
+fsr_14 <- tidyup("RareITS2FSR14_ITS2_GenMt0.001.csv", "FSR")
+bk_14 <- tidyup("RareITS2BK14_ITS2_GenMt0.001.csv","BK")
+gh_14 <- tidyup("RareITS2GH14_ITS2_GenMt0.001.csv","GH")
+cc_14 <- tidyup("RareITS2CC14_ITS2_GenMt0.001.csv","CC")
 ###-------------------------------------------------------------------------------------------
 dat13 <- full_join(gh_13, bk_13) %>%
   full_join(cc_13) %>%
@@ -150,7 +142,6 @@ ggplot(dfTO, aes(x=xday, y=MRS, colour=site)) + geom_point(size=1, aes(shape=sit
 ggplot(dfTO, aes(x=site, y=MRS, colour=site)) + theme_bw() + geom_boxplot() + facet_grid(rows=vars(yr), scales="free") + ylab("Mean Rank Shift") + xlab("Site") +
   geom_point(size=1) + stat_summary(fun.y=mean,color="black",geom="point",size=2,shape=24) + scale_colour_manual(values = c("black","darkgrey","green3","springgreen4"))
 
-
 l <- list('CC','FSR','GH','BK')
 d <- c(0.545,0.073,0.983,0.954)
 o <- c(0,0,0,0)
@@ -172,20 +163,19 @@ cor.test(lmdf$devo,lmdf$th, alternative = "greater")
 plot(lmdf$devo,lmdf$fo)
 cor.test(lmdf$devo,lmdf$fo, alternative = "greater")
 
-
 ##################################################################################################### Qualitative
 ##################################################################################################### 
 ##################################################################################################### Turnover
 
-fsr_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2FSR13_ITS2_GenMt0.001.csv")
-bk_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2BK13_ITS2_GenMt0.001.csv")
-gh_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2GH13_ITS2_GenMt0.001.csv")
-cc_13 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2CC13_ITS2_GenMt0.001.csv")
+fsr_13 <- read.csv("RareITS2FSR13_ITS2_GenMt0.001.csv")
+bk_13 <- read.csv("RareITS2BK13_ITS2_GenMt0.001.csv")
+gh_13 <- read.csv("RareITS2GH13_ITS2_GenMt0.001.csv")
+cc_13 <- read.csv("RareITS2CC13_ITS2_GenMt0.001.csv")
 
-fsr_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2FSR14_ITS2_GenMt0.001.csv")
-bk_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2BK14_ITS2_GenMt0.001.csv")
-gh_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2GH14_ITS2_GenMt0.001.csv")
-cc_14 <- read.csv("E:/UR2019/RarefiedITS2/RareITS2CC14_ITS2_GenMt0.001.csv")
+fsr_14 <- read.csv("RareITS2FSR14_ITS2_GenMt0.001.csv")
+bk_14 <- read.csv("RareITS2BK14_ITS2_GenMt0.001.csv")
+gh_14 <- read.csv("RareITS2GH14_ITS2_GenMt0.001.csv")
+cc_14 <- read.csv("RareITS2CC14_ITS2_GenMt0.001.csv")
 
 ###--------------------------------------------------------------------------
 
@@ -226,7 +216,6 @@ ggplot(dfQT, aes(x=day, y=qTurn, colour=site)) + geom_point(size=1, aes(shape=si
 ggplot(dfQT, aes(x=site, y=qTurn, colour=site)) + theme_bw() + geom_boxplot() + facet_grid(rows=vars(yr), scales="free") + ylab("Qualitative Turnover") + xlab("Site") +
   geom_point(size=1) + stat_summary(fun.y=mean,color="black",geom="point",size=2, shape=24) + scale_colour_manual(values = c("black","darkgrey","green3","springgreen4"))
 
-
 l <- list('cc','fs','gh','bk')
 d <- c(0.545,0.073,0.983,0.954)
 o <- c(0,0,0,0)
@@ -248,139 +237,4 @@ cor.test(lmdf$devo,lmdf$th, alternative = "greater")
 plot(lmdf$devo,lmdf$fo)
 cor.test(lmdf$devo,lmdf$fo, alternative = "greater")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##################################################################################################### 
-##################################################################################################### GAMs
-##################################################################################################### 
-
-dfDV13 <- subset(dfDV, dfDV$yr==13)
-dfDV14 <- subset(dfDV, dfDV$yr==14)
-summary(gam(DV ~ te(JD, by=site, bs="fs") + site + as.factor(yr), data = dfDV), select=T, method="REML") # try te() allows different wiggliness between sites
-summary(gam(DV ~ s(JD, by=site) + as.factor(yr), data = dfDV), select=T, method="REML") # try te() allows different wiggliness between sites
-summary(gam(DV ~ s(JD, by=site, bs="re") + as.factor(yr), data = dfDV), select=T, method="REML")
-g1 <- gam(DV ~ s(JD, site, bs="fs") + as.factor(yr), data=dfDV, method="REML")
-summary(g1) # http://astrostatistics.psu.edu/su07/R/html/mgcv/html/summary.gam.html
-draw(g1)
-
-summary(gam(DV ~ s(JD, site, bs="fs"), data=dfDV13, method="REML"))
-summary(gam(DV ~ s(JD, site, bs="fs"), data=dfDV14, method="REML"))
-summary(gam(DV ~ s(JD) + site, data=dfDV13, method="REML"))
-summary(gam(DV ~ s(JD) + site, data=dfDV14, method="REML"))
-
-summary(gam(DV ~ s(JD, bs="fs") + site + as.factor(yr), data = dfDV), select=T, method="REML")
-
-
-plot(gam(DV ~ s(JD, site, bs="fs") + as.factor(yr), data = dfDV), select=T, method="REML")
-summary(gam(DV ~ s(JD) + site, data = dfDV14))
-plot.gam(gam(DV ~ s(JD) + site + yr, data = dfDV), all.terms = T)
-gam.check(gam(DV ~ s(JD) + site + yr, data = dfDV))
-
-x <- gam(DV ~ te(JD, by=site, bs="gp") + site + as.factor(yr), data = dfDV, select=T, method="REML") # try te() allows different wiggliness between sites
-plot.gam(x, pages = 1, all.terms = T)
-
-# https://www.fromthebottomoftheheap.net/2017/10/10/difference-splines-i/
-# https://petolau.github.io/Analyzing-double-seasonal-time-series-with-GAM-in-R/
-t
-
-?plot.gam
-
-
-
-
-##################################################################################################### 
-##################################################################################################### dH/dT
-##################################################################################################### 
-
-fsr_13 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/FSR13_Med_GenPf0.0005Mt0.001.csv")
-bk_13 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/BK13_Med_GenPf0.0005Mt0.001.csv")
-gh_13 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/GH13_Med_GenPf0.0005Mt0.001.csv")
-cc_13 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/CC13_Med_GenPf0.0005Mt0.001.csv")
-
-fsr_14 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/FSR14_Med_GenPf0.0005Mt0.001.csv")
-bk_14 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/BK14_Med_GenPf0.0005Mt0.001.csv")
-gh_14 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/GH14_Med_GenPf0.0005Mt0.001.csv")
-cc_14 <- read.csv("E:/UR2019/EcoMetrics/BC_dissimilarity/CC14_Med_GenPf0.0005Mt0.001.csv")
-
-###--------------------------------------------------------------------------
-
-l <- list(gh_14,bk_14,cc_14,fsr_14,gh_13,bk_13,cc_13,fsr_13)
-Pi1 <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # Pi 1
-Pi2 <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # Pi 2
-dPi <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # delta Pi
-GdHdT <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # contribution of each genus
-dHdT <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # sum contribution
-ol <- list('gh_14','bk_14','cc_14','fs_14','gh_13','bk_13','cc_13','fs_13') # output
-
-for (i in 1:length(l)){
-  l[[i]][l[[i]] == 0] <- NA
-  site <- as.vector(rep(substring(ol[[i]],1,2),(nrow(l[[i]]) - 1)))
-  yr <- as.vector(rep(substring(ol[[i]],4,5),(nrow(l[[i]]) - 1)))
-  Pi1[[i]] <- t(l[[i]][1:(nrow(l[[i]])-1),2:ncol(l[[i]])])
-  Pi2[[i]] <- t(l[[i]][2:(nrow(l[[i]])),2:ncol(l[[i]])])
-  dPi[[i]] <- (Pi1[[i]] - Pi2[[i]])
-  d1 <- yday(l[[i]][1:(nrow(l[[i]])-1),1])
-  d2 <- yday(l[[i]][2:(nrow(l[[i]])),1])
-  dDay <- (d2 - d1)
-  GdHdT[[i]] <- (dPi[[i]]/dDay[[i]])*(1+log(Pi1[[i]]))
-  dHdT <- (-1)*colSums(GdHdT[[i]], na.rm = T)
-  ol[[i]] <- as.data.frame(cbind(site, yr, d1, dHdT))
-  colnames(ol[[i]]) <- c("site","yr","day","dHdT")
-}
-
-dfQT <- ol[[1]]; for (i in 2:length(ol)){
-  dfQT <- rbind(dfQT,ol[[i]])
-}
-
-dfQT$yr <- as.numeric(as.character(dfQT$yr))
-dfQT$day <- as.numeric(as.character(dfQT$day))
-dfQT$dHdT <- as.numeric(as.character(dfQT$dHdT))
-
-ggplot(df, aes(day, dHdT, color=site)) + 
-  geom_line(size= 2) + theme_bw() + facet_grid(rows = vars(yr))
-ggplot(df, aes(day, dHdT, colour=site)) + 
-  geom_point(size=2) + theme_bw() +
-  geom_smooth(se = F) + facet_grid(rows = vars(yr))
 
