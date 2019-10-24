@@ -5,8 +5,8 @@ This archive contains the bioinformatic commands, reference sequence databases a
 
 ### More detailed overview of contents
 1. Sample-tag indices and PCR primers  
-  - __SampleTag_SiteDate_Index.xlsx__ contains information on the relationship between NCBI file label sample tags and sample site date
-  - __PCR_methods.xlsx__ contains information on the primers and PCR conditions used for library preparation
+    - __SampleTag_SiteDate_Index.xlsx__ contains information on the relationship between NCBI file label sample tags and sample site date
+    - __PCR_methods.xlsx__ contains information on the primers and PCR conditions used for library preparation
 
 2. Bioinformatic analysis  
   - __Workflow.md__ contains overview of tools and commands used to process sequencing data
