@@ -7,11 +7,11 @@ This archive contains the bioinformatic commands, reference sequence databases a
 - Coming soon
 
 2. Bioinformatic analysis  
--Workflow.md contains overview of tools and commands used to process sequencing data
--OhioDatabases.zip contain reference sequence databases used for taxonomic annotationo of sequence data
--Python code used to format and summarize taxonomic annotations: VsearchToMetaxa2.py and ThreeMarkerMedianConsensus.py
+- Workflow.md contains overview of tools and commands used to process sequencing data
+- OhioDatabases.zip contains reference sequence databases used for taxonomic annotationo of sequence data
+- VsearchToMetaxa2.py and ThreeMarkerMedianConsensus.py were used to format and summarize taxonomic annotations
 
-3. Directories containing Excel spreadsheets of raw data, including genus and family-leel three-marker metabarcoding median results as well as rarefied ITS2 results  
--Family-leel three-marker metabarcoding median results: FamilyMedians
--Genus-leel three-marker metabarcoding median results: GenusMedians
--Genus-level rarefied ITS2 results: RarefiedITS2
+3. Directories containing Excel spreadsheets of raw data  
+- Family-leel three-marker metabarcoding median results: FamilyMedians
+- Genus-leel three-marker metabarcoding median results: GenusMedians
+- Genus-level rarefied ITS2 results: RarefiedITS2
