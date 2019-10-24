@@ -5,15 +5,15 @@ This archive contains the bioinformatic commands, reference sequence databases a
 
 ### More detailed overview of contents
 1. Sample-tag indices and PCR primers  
-- SampleTag_SiteDate_Index.xlsx contains information on the relationship between NCBI file label sample tags and sample site date
-- PCR_methods.xlsx contains information on the primers and PCR conditions used for library preparation
+  - __SampleTag_SiteDate_Index.xlsx__ contains information on the relationship between NCBI file label sample tags and sample site date
+  - __PCR_methods.xlsx__ contains information on the primers and PCR conditions used for library preparation
 
 2. Bioinformatic analysis  
-- Workflow.md contains overview of tools and commands used to process sequencing data
-- OhioDatabases.zip contains reference sequence databases used for taxonomic annotationo of sequence data
-- VsearchToMetaxa2.py and ThreeMarkerMedianConsensus.py were used to format and summarize taxonomic annotations
+  - __Workflow.md__ contains overview of tools and commands used to process sequencing data
+  - __OhioDatabases.zip__ contains reference sequence databases used for taxonomic annotation of sequence data
+  - __VsearchToMetaxa2.py__ and __ThreeMarkerMedianConsensus.py__ were used to format and summarize taxonomic annotations
 
 3. Directories containing Excel spreadsheets of raw data  
-- Family-leel three-marker metabarcoding median results can be found in the FamilyMedians directory
-- Genus-leel three-marker metabarcoding median results can be found in the GenusMedians directory
-- Genus-level rarefied ITS2 results can be found in the RarefiedITS2 directory
+  - Family-leel three-marker metabarcoding median results can be found in the __FamilyMedians__ directory
+  - Genus-leel three-marker metabarcoding median results can be found in the __GenusMedians__ directory
+  - Genus-level rarefied ITS2 results can be found in the __RarefiedITS2__ directory
