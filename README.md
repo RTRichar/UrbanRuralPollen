@@ -4,7 +4,7 @@ This archive contains the bioinformatic commands, reference sequence databases a
 
 ### Overview of contents
 1. Sample-tag indices and PCR primers  
--Coming soon
+- Coming soon
 
 2. Bioinformatic analysis  
 -Workflow.md contains overview of tools and commands used to process sequencing data
