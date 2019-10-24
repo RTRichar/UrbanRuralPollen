@@ -12,6 +12,7 @@ This archive contains the bioinformatic commands, reference sequence databases a
     - __Workflow.md__ contains overview of tools and commands used to process sequencing data
     - __OhioDatabases.zip__ contains reference sequence databases used for taxonomic annotation of sequence data
     - __VsearchToMetaxa2.py__ and __ThreeMarkerMedianConsensus.py__ were used to format and summarize taxonomic annotations
+    - __EcoMetrics.R__ provides the R code used to calculate ecological indices from the rarefied ITS2 data
 
 3. Directories containing Excel spreadsheets of raw data  
      - Family-leel three-marker metabarcoding median results can be found in the __FamilyMedians__ directory
